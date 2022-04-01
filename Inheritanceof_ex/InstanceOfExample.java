@@ -1,4 +1,4 @@
-package Inheritanceofex;
+package Inheritanceof_ex;
 
 public class InstanceOfExample {
 	public static void main(String[] args) {

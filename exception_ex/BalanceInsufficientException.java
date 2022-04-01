@@ -1,4 +1,4 @@
-package exceptionex;
+package exception_ex;
 
 public class BalanceInsufficientException extends Exception{
 	public BalanceInsufficientException() {} //생성자메소드

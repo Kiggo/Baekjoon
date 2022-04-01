@@ -1,4 +1,4 @@
-package abstractex;
+package abstract_ex;
 
 public abstract class Phone {
 	//필드

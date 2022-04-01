@@ -1,4 +1,4 @@
-package abstractex2;
+package abstract_ex2;
 
 public class DataManager {
 	private People[] p = new People[30];

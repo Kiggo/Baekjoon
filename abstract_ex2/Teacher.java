@@ -1,4 +1,4 @@
-package abstractex2;
+package abstract_ex2;
 
 public class Teacher extends People {
 	private String id; //교번

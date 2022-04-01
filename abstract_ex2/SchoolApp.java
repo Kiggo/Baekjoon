@@ -1,4 +1,4 @@
-package abstractex2;
+package abstract_ex2;
 
 import java.util.InputMismatchException;
 

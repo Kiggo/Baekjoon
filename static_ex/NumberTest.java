@@ -1,4 +1,4 @@
-package staticex;
+package static_ex;
 
 public class NumberTest {
 	public static void main(String[] args) {

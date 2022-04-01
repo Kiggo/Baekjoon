@@ -1,4 +1,4 @@
-package exceptionex;
+package exception_ex;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

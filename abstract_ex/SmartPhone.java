@@ -1,4 +1,4 @@
-package abstractex;
+package abstract_ex;
 
 public class SmartPhone extends Phone{
 	//생성자

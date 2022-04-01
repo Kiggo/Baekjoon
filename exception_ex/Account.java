@@ -1,4 +1,4 @@
-package exceptionex;
+package exception_ex;
 
 public class Account {
 	private long balance;

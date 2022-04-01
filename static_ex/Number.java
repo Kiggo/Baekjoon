@@ -1,4 +1,4 @@
-package staticex;
+package static_ex;
 
 public class Number {
 	private int num;

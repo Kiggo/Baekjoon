@@ -1,4 +1,4 @@
-package abstractex2;
+package abstract_ex2;
 
 public abstract class People {
 	String name;

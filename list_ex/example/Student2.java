@@ -1,4 +1,4 @@
-package list_ex_ex;
+package list_ex.example;
 
 public class Student2 implements Comparable<Student2>{
 	public String id;

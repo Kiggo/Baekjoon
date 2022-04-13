@@ -1,4 +1,4 @@
-package list_ex_ex;
+package list_ex.example;
 
 import java.util.TreeSet;
 

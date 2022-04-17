@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+
+<HBox xmlns:fx="http://javafx.com/fxml/1">
+	<!-- TODO Add Nodes -->
+	<padding>
+		<Insets top = "10" right = "10" bottom = "10" left = "10"/>
+	</padding>
+	<spacing>10</spacing> <!-- 컨트롤 간의 수평 간격 설정 -->
+
+	<children> <!-- 자식 컨트롤 추가 -->
+		<TextField>
+			<prefWidth>200</prefWidth>
+		</TextField>
+		
+		<Button >
+		<text>확인</text>
+		</Button>
+	</children>
+</HBox>
+

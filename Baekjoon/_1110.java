@@ -11,13 +11,15 @@ public class _1110 {
 		
 		int a=num/10;
 		int b=num%10;
-		for(int i = 0; sum==num; i++) {
+		while(true) {
 			int sum=(b*10)+(a+b)%10;
-			System.out.println(a+" + "+b+" = "+(a+b));//2 + 6 = 8
-			System.out.println(sum); //6 8
+			//System.out.println(a+" + "+b+" = "+(a+b));//2 + 6 = 8
+			//System.out.println(sum); //6 8
 			a=sum/10; //6
 			b=sum%10; //8
 			count++;
+			if(num==sum)
+				break;
 		}
 		System.out.println(count);
 	}

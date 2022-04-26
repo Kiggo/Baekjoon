@@ -12,6 +12,14 @@ public class EmpVO {
 	private double comm;
 	private int deptno;
 	
+	public EmpVO(int empno, String ename, double sal) {
+		setEmpno(empno); //this.empno=empno;
+		setEname(ename);
+		setSal(sal);
+	}
+	public EmpVO() {
+		
+	}
 	public int getEmpno() {
 		return empno;
 	}

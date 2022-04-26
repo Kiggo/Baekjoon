@@ -19,7 +19,7 @@ public class DBConnectionTest {
 		} catch (ClassNotFoundException e) {
 			System.out.println("드라이버를 찾을 수 없습니다"+e.getMessage());
 		} catch (SQLException e) {
-			System.out.println("DB접속 에러:"+e.getMessage());
+			System.out.println("DB 접속 에러:"+e.getMessage());
 		}finally {
 			if(con!=null)
 				try {

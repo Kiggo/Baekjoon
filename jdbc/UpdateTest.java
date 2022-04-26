@@ -2,6 +2,7 @@ package jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
@@ -9,13 +10,14 @@ import java.util.Scanner;
 public class UpdateTest {
 	Connection con=null;
 	Statement st=null;
+	PreparedStatement ps;
 	//DB연결
 	//오라클 url 경로
-	String url="jdbc:oracle:thin:@localhost:1521:xe";
-	String DRIVER="oracle.jdbc.OracleDriver";
+	//String url="jdbc:oracle:thin:@localhost:1521:xe";
+	//String DRIVER="oracle.jdbc.OracleDriver";
 	
 	public UpdateTest() {
-		try {
+		/*try {
 			Class.forName(DRIVER);
 			System.out.println("드라이브 로드 성공");
 			con=DriverManager.getConnection(url, "scott", "tiger");
@@ -24,7 +26,8 @@ public class UpdateTest {
 			System.out.println("드라이브를 찾을 수 없다"+e.getMessage());
 		} catch (SQLException e) {
 			System.out.println("DB 접속 에러"+e.getMessage());
-		}
+		}*/
+		con=DBSingleton.getInstance();
 	}
 
 	public int updateEmp(EmpVO vo) {
@@ -32,11 +35,17 @@ public class UpdateTest {
 		String job=vo.getJob();
 		double sal=vo.getSal();
 		
-		String sql ="UPDATE emp SET job='"+job+"',sal="+sal+" WHERE empno="+empno+" ";
+		//String sql ="UPDATE emp SET job='"+job+"',sal="+sal+" WHERE empno="+empno+" ";
 		int result=0;
 		try {
-			st=con.createStatement();
-			result=st.executeUpdate(sql);
+			ps = con.prepareStatement("UPDATE emp SET job=?,sal=? WHERE empno=?");
+			System.out.println("PreparedStatement 생성 성공");
+			//st=con.createStatement();
+			ps.setString(1, job);
+			ps.setDouble(2, sal);
+			ps.setInt(3, empno);
+			//result=st.executeUpdate(sql);
+			result=ps.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.toString());
 		}finally {

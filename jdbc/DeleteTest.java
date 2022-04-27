@@ -40,12 +40,14 @@ public class DeleteTest {
 			//result=st.executeUpdate(sql);
 			result=ps.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println("DB에러"+e.getMessage());
+			System.out.println(e.toString());
 		}finally {
 			try {
 				if(st!=null) st.close();
 				if(con!=null)con.close();
-			} catch (Exception e2) {}
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
 		}
 		return result;
 	}

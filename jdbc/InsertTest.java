@@ -13,11 +13,11 @@ public class InsertTest {
 	PreparedStatement ps; //쿼리 문장을 생성
 	//DB연결
 	//오라클 url 경로
-	String url="jdbc:oracle:thin:@localhost:1521:xe";
-	String DRIVER="oracle.jdbc.OracleDriver";
+	//String url="jdbc:oracle:thin:@localhost:1521:xe";
+	//String DRIVER="oracle.jdbc.OracleDriver";
 	
 	public InsertTest() {
-		try {
+		/*try {
 			Class.forName(DRIVER);
 			System.out.println("드라이브 로드 성공");
 			con=DriverManager.getConnection(url, "scott", "tiger");
@@ -26,12 +26,13 @@ public class InsertTest {
 			System.out.println("드라이브를 찾을 수 없다"+e.getMessage());
 		} catch (SQLException e) {
 			System.out.println("DB 접속 에러"+e.getMessage());
-		}/*finally {
+		}finally {
 			if(con!=null)
 				try {
 					con.close();
 				} catch (SQLException e) {}
 		}*/
+		con=DBSingleton.getInstance();
 	}
 	public int insertData(int empno, String ename, double sal) {
 		String sql="INSERT INTO emp(empno,ename,sal) VALUES("+empno+",'"+ename+"',"+sal+")";
@@ -51,7 +52,7 @@ public class InsertTest {
 		}
 		return result;
 	}
-	/*public int insertDate(EmpVO vo) {
+	public int insertDate(EmpVO vo) {
 		int empno=vo.getEmpno();
 		String ename=vo.getEname();
 		double sal=vo.getSal();
@@ -73,7 +74,7 @@ public class InsertTest {
 			}
 		}
 		return result;
-	}*/
+	}
 	public int preparedEmp(EmpVO vo) { //result 가 정수형이기때문에 int
 		//int empno=vo.getEmpno();
 		//String ename=vo.getEname();

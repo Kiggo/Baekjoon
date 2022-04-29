@@ -68,5 +68,15 @@ public class EmpVO {
 	public void setDeptno(int deptno) {
 		this.deptno = deptno;
 	}
+	@Override
+	public String toString() {
+		String str="";
+		str=String.format("%8d %8s %8s %8.2f", empno,ename,job,sal);
+		return str;
+		/*
+		return "EmpVO [empno=" + empno + ", ename=" + ename + ", job=" + job + ", mgr=" + mgr + ", hiredate=" + hiredate
+				+ ", sal=" + sal + ", comm=" + comm + ", deptno=" + deptno + "]";
+		*/
+	}
 	
 }

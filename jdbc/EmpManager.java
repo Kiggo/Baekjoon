@@ -36,13 +36,15 @@ public class EmpManager {
 		Iterator<EmpVO> it = lists.iterator();
 		while(it.hasNext()) {
 			EmpVO vo = it.next();
-			//String str = vo.toString(); // 객체를 문자열로 변환
+			String str = vo.toString(); // 객체를 문자열로 변환
+			/*
 			int empno = vo.getEmpno();
-			String ename = vo.getEname();
+			String ename = vo.getEname(); 속성메소드
 			String job = vo.getJob();
 			double sal = vo.getSal();
-			//System.out.println(str);
-			System.out.println(empno+"\t"+ename+"\t"+job+"\t"+sal);
+			*/
+			System.out.println(str);
+			//System.out.println(empno+"\t"+ename+"\t"+job+"\t"+sal);
 		}
 		
 	}

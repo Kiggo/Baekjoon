@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 public class MemberTest {
 	public static void main(String[] args) throws SQLException {
-		MemberVO vo = new MemberVO();
+		/*MemberVO vo = new MemberVO();
 		MemberVO vo2 = new MemberVO("korea", "koea", "korea", "koea");
 		System.out.println(vo.toString());
 		System.out.println(vo2.toString());
@@ -17,8 +17,11 @@ public class MemberTest {
 		String password = vo2.getPassword();
 		String name = vo2.getName();
 		System.out.printf("%10s %10s %10s\n",id , password, name);
-		
-		MemberDAO dao = new MemberDAO();
-		dao.close();
+		*/
+		//MemberDAO dao = new MemberDAO();
+		MemberManager mm = new MemberManager();
+		//mm.inputMember();
+		mm.writeAll();
+		//dao.close();
 	}
 }

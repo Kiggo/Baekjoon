@@ -3,19 +3,15 @@ package jdbc;
 public class EmpMain {
 	public static void main(String[] args) {
 		//메뉴 선택 만들기
-		Menu menu = new Menu();
-		EmpDAO dao = new EmpDAO();
-		EmpVO vo = new EmpVO();
 		EmpManager em = new EmpManager();
 		int sel=0;
 		while(true) {
-			menu.showMenu();
-			sel=menu.sc.nextInt();
-			menu.sc.nextLine();
+			Menu.showMenu();
+			sel=Menu.sc.nextInt();
+			Menu.sc.nextLine();
 			switch (sel) {
 			case 1:
 				System.out.println("회원가입");
-				dao.insertEmp(vo);
 				em.inputData();
 				break;
 			case 2:
@@ -28,12 +24,10 @@ public class EmpMain {
 				break;
 			case 4:
 				System.out.println("정보수정");
-				dao.updateEmp(vo);
 				em.modifyData();
 				break;
 			case 5:
 				System.out.println("정보삭제");
-				dao.deleteEmp(vo);
 				em.removeDate();
 				break;
 			case 6:

@@ -37,11 +37,13 @@ public class BankApplication {
 		System.out.println("ㅡㅡㅡㅡㅡ");
 		System.out.println("계좌생성");
 		System.out.println("ㅡㅡㅡㅡㅡ");
-		sc.nextLine();
 		System.out.print("계좌번호: ");
+		String ano = sc.next();
 		System.out.print("계좌주: ");
+		String owner = sc.nextLine();
 		System.out.print("초기입금액: ");
-		accountArray[0]=new Account(sc.nextLine(),sc.nextLine(),sc.nextInt());
+		int balance = sc.nextInt();
+		accountArray[0]=new Account(ano,owner,balance);
 		System.out.println("결과: 계좌가 생성되었습니다.");
 	}
 	

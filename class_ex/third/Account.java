@@ -5,6 +5,14 @@ public class Account {
 	private String owner;
 	private int balance;
 	
+	public Account() {this("","",0);} //this() 메소드 사용 자동 초기화 시켜준다
+	
+	public Account(String ano) {
+		this(ano,"",0);
+	}
+	public Account(String ano, String owner) {
+		this(ano,owner,0);
+	}
 	public Account(String ano, String owner, int balance) {
 		this.ano = ano;
 		this.owner = owner;

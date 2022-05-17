@@ -106,10 +106,10 @@ public class MemberDAO {
 	}
 	//회원 정보 삭제
 	public boolean deleteMember(MemberVO vo) {
-		String sql = "DELETE from member WHERE name=?";
+		String sql = "DELETE from member WHERE id=?";
 		try {
 			ps=con.prepareStatement(sql);
-			ps.setString(1, vo.getName());
+			ps.setString(1, vo.getId());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("DB 에러"+e.getMessage());
@@ -119,6 +119,7 @@ public class MemberDAO {
 		}
 		return true;
 	}
+
 	public void close() throws SQLException {
 		if(con!=null) {
 			if(!con.isClosed())

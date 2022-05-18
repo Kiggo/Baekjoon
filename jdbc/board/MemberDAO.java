@@ -60,7 +60,7 @@ public class MemberDAO {
 		return list;
 	}
 	
-	//회원 정보변경
+	//회원정보변경
 	public boolean editMember(MemberVO vo) {
 		String sql = "UPDATE member SET id=?,password=?,email=? WHERE name=?";
 		try {
@@ -77,7 +77,6 @@ public class MemberDAO {
 			DBClose.close(ps);
 		}
 		return true;
-		
 	}
 	
 	//회원정보삭제
@@ -96,8 +95,8 @@ public class MemberDAO {
 		return true;
 	}
 	
-	//회원 아이디 검색
-	public ArrayList<MemberVO> getloginID(String id, String password) {
+	//회원아이디검색
+	public ArrayList<MemberVO> getlogin(String id, String password) {
 		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
 		String sql = "select id, password from member where id like '%'||?||'%' "
 				+ "and password like '%'||?||'%'";

@@ -44,12 +44,11 @@ public class MemberVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 	@Override
 	public String toString() {
 		String str="";
 		str=String.format("%8s %8s %8s %8s", id,password,name,email);
 		return str;
 	}
-	
-	
 }

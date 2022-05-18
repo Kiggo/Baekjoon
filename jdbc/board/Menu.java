@@ -11,6 +11,6 @@ public class Menu {
 		System.out.println("1.회원전체보기 2.회원정보수정 3.회원정보삭제");
 	}
 	public static void boardMenu() {
-		System.out.println("1.게시물작성 2.전체보기 3.수정 4.삭제");
+		System.out.println("1.게시물작성 2.전체보기 3.수정 4.삭제 5.로그아웃");
 	}
 }

@@ -13,6 +13,7 @@ public class DBSingleton {
 	
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String DRIVER = "oracle.jdbc.OracleDriver";
+		
 		if(con==null) {
 			try {
 				Class.forName(DRIVER);
@@ -28,4 +29,3 @@ public class DBSingleton {
 		return con;
 	}
 }
-

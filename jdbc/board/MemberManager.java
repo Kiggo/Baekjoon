@@ -33,6 +33,7 @@ public class MemberManager {
 		else
 			System.out.println("회원 가입 실패");
 	}
+	
 	//회원 전체 출력
 	public void writeAll() {
 		ArrayList<MemberVO> list = dao.getMemberList();
@@ -76,28 +77,28 @@ public class MemberManager {
 	}
 	
 	//로그인
-	public void loginID() {
+	public boolean login() {
 		System.out.print("아이디: ");
 		String id = Menu.sc.nextLine();
 		System.out.print("비밀번호: ");
 		String pw = Menu.sc.nextLine();
-		ArrayList<MemberVO> list = dao.getloginID(id,pw);
+		ArrayList<MemberVO> list = dao.getlogin(id,pw);
 		Iterator<MemberVO> it = list.iterator();
 		while(it.hasNext()) {
 			vo = it.next();
 		}
-		/*ArrayList<MemberVO> list2 = dao.getloginPW(pw);
-		Iterator<MemberVO> it2 = list2.iterator();
-		while(it.hasNext()) {
-			vo = it2.next();
-		}*/
-		if(id.equals(vo.getId())&&pw.equals(vo.getPassword()))
+		if(id.equals(vo.getId())&&pw.equals(vo.getPassword())) {
 			System.out.println(vo.getId()+"님 로그인 성공");
-		else if(id.equals("admin")&&pw.equals("admin"))
+			return true;
+		}
+		else if(id.equals("admin")&&pw.equals("admin")) {
 			System.out.println("관리자 로그인 성공");
-		else
+			Menu.memberMenu();
+			return true;
+		}
+		else {
 			System.out.println("로그인실패");
-		
+			return false;
+		}
 	}
-	
 }

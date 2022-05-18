@@ -12,7 +12,7 @@ public class DBSingleton {
 	public static Connection getInstance() {
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String DRIVER = "oracle.jdbc.OracleDriver";
-		if(con==null)
+		if(con==null) {
 			try {
 				Class.forName(DRIVER);
 				System.out.println("드라이버 로드 성공");
@@ -23,6 +23,7 @@ public class DBSingleton {
 			} catch (SQLException e) {
 				System.out.println("DB 연결 실패"+e.getMessage());
 			}
+		}
 		return con;
 	}
 	

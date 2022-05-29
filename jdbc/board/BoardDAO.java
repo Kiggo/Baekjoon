@@ -30,6 +30,8 @@ public class BoardDAO {
 			result = ps.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("DB 에러"+e.getMessage());
+		}finally {
+			DBClose.close(ps);
 		}
 		return result;
 	}
@@ -50,9 +52,11 @@ public class BoardDAO {
 			}
 		} catch (SQLException e) {
 			System.out.println("DB 에러"+e.getMessage());
+		}finally {
+			DBClose.close(rs);
+			DBClose.close(ps);
 		}
 		return list;
-		
 	}
 	
 	//게시물 변경

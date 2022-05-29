@@ -7,10 +7,12 @@ import java.util.Scanner;
 public class MemberManager {
 	MemberDAO dao;
 	MemberVO vo;
+	BoardVO bvo;
 	
 	public MemberManager() {
 		dao = new MemberDAO();
 		vo = new MemberVO();
+		bvo = new BoardVO();
 	}
 	
 	public void inputMember() {
@@ -49,35 +51,34 @@ public class MemberManager {
 
 	//회원 정보 수정
 	public void modifyData() {
-		System.out.println("회원 정보 수정");
-		System.out.print("이름: ");
+		System.out.print("수정할 이름: ");
 		vo.setName(Menu.sc.nextLine());
-		System.out.print("아이디: ");
-		vo.setId(Menu.sc.nextLine());
-		System.out.print("비밀번호: ");
-		vo.setPassword(Menu.sc.nextLine());
-		System.out.print("이메일: ");
-		vo.setEmail(Menu.sc.nextLine());
 		boolean bool = dao.editMember(vo);
-		if(bool)
+		if(bool) {
+			System.out.print("아이디: ");
+			vo.setId(Menu.sc.nextLine());
+			System.out.print("비밀번호: ");
+			vo.setPassword(Menu.sc.nextLine());
+			System.out.print("이메일: ");
+			vo.setEmail(Menu.sc.nextLine());
 			System.out.println("회원 정보 수정 성공");
-		else
+		}else
 			System.out.println("회원 정보 수정 실패");
 	}
 	
 	//회원 정보 삭제 
 	public void removeData() {
-		System.out.println("아이디: ");
+		System.out.println("삭제할 아이디: ");
 		vo.setId(Menu.sc.nextLine());
 		boolean bool = dao.deleteMember(vo);
 		if(bool)
-			System.out.println("회원 정보 삭제 성공");
+			System.out.println("회원정보 삭제 성공");
 		else
-			System.out.println("회원 정보 삭제 실패");
+			System.out.println("회원정보 삭제 실패");
 	}
 	
 	//로그인
-	public boolean login() {
+	public int login() {
 		System.out.print("아이디: ");
 		String id = Menu.sc.nextLine();
 		System.out.print("비밀번호: ");
@@ -89,16 +90,16 @@ public class MemberManager {
 		}
 		if(id.equals(vo.getId())&&pw.equals(vo.getPassword())) {
 			System.out.println(vo.getId()+"님 로그인 성공");
-			return true;
+			bvo.setWriter(id);
+			return 1;
 		}
 		else if(id.equals("admin")&&pw.equals("admin")) {
 			System.out.println("관리자 로그인 성공");
-			Menu.memberMenu();
-			return true;
+			return 2;
 		}
 		else {
 			System.out.println("로그인실패");
-			return false;
+			return 0;
 		}
 	}
 }

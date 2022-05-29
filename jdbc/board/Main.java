@@ -5,6 +5,7 @@ public class Main {
 		MemberManager mm = new MemberManager();
 		BoardManager bm = new BoardManager();
 		int sel = 0;
+		int num = 0;
 		while(true) {
 			Menu.showMenu();
 			sel = Menu.sc.nextInt();
@@ -14,31 +15,77 @@ public class Main {
 				mm.inputMember();
 				break;
 			case 2:
+				num = mm.login();
 				breakOut:
-				if(mm.login()==true) {
-					int sel2 = 0;
+				if(num==1) { //회원로그인
+					sel = 0;
 					while(true) {
 						Menu.boardMenu();
-						sel2 = Menu.sc.nextInt();
+						sel = Menu.sc.nextInt();
 						Menu.sc.nextLine();
-						switch (sel2) {
+						switch (sel) {
+							case 1:
+								//게시물작성
+								bm.newBoard();
+								break;
+							case 2:
+								//게시물 전체보기
+								bm.listBoard();
+								break;
+							case 3:
+								//게시물 수정
+								bm.editBoard();
+								break;
+							case 4:
+								//게시물 삭제
+								bm.deleteBoard();
+								break;
+							case 5:
+								System.out.println("로그아웃");
+								break breakOut;
+							default:
+								System.out.println("다시 입력하세요.");
+								break;
+						}
+					}
+				}
+				else if(num==2) { // 관리자 로그인
+					sel = 0;
+					while(true) {
+					Menu.memberMenu();
+					sel = Menu.sc.nextInt();
+					Menu.sc.nextLine();
+					switch (sel) {
 						case 1:
-							bm.newBoard();
+							//회원전체보기
+							mm.writeAll();
 							break;
 						case 2:
-							bm.listBoard();
+							//회원정보수정
+							mm.modifyData();
 							break;
 						case 3:
-							bm.editBoard();
+							//회원정보삭제
+							mm.removeData();
 							break;
 						case 4:
-							bm.deleteBoard();
+							bm.newBoard();
 							break;
 						case 5:
+							bm.listBoard();
+							break;
+						case 6:
+							bm.editBoard();
+							break;
+						case 7:
+							bm.deleteBoard();
+							break;
+						case 8:
+							//로그아웃
 							System.out.println("로그아웃");
 							break breakOut;
 						default:
-							System.out.println("다시 입력하세요.");
+							System.out.println("다시 입력해주세요");
 							break;
 						}
 					}

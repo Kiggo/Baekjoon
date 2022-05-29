@@ -6,10 +6,12 @@ import java.util.Iterator;
 public class BoardManager {
 	BoardDAO dao;
 	BoardVO vo;
+	MemberVO mvo;
 	
 	public BoardManager() {
 		dao = new BoardDAO();
 		vo = new BoardVO();
+		mvo = new MemberVO();
 	}
 	
 	//게시물 작성
@@ -20,7 +22,7 @@ public class BoardManager {
 		System.out.print("내용: ");
 		vo.setContent(Menu.sc.nextLine());
 		System.out.print("작성자: ");
-		vo.setWriter(Menu.sc.nextLine());
+		//vo.setWriter(mvo.getId());
 		int res = dao.WritePost(vo);
 		if(res>0)
 			System.out.println("게시물이 등록 되었습니다");

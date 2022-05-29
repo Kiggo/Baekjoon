@@ -62,6 +62,7 @@ public class MemberDAO {
 	
 	//회원정보변경
 	public boolean editMember(MemberVO vo) {
+		int cnt;
 		String sql = "UPDATE member SET id=?,password=?,email=? WHERE name=?";
 		try {
 			ps=con.prepareStatement(sql);
@@ -69,33 +70,46 @@ public class MemberDAO {
 			ps.setString(2, vo.getPassword());
 			ps.setString(3, vo.getEmail());
 			ps.setString(4, vo.getName());
-			ps.executeUpdate();
+			cnt=ps.executeUpdate();
+			if(cnt>0) {
+				System.out.println(vo.getName()+"수정성공");
+				return true;
+			}else {
+				System.out.println("이름을 찾을 수 없습니다");
+				return false;
+			}
 		} catch (SQLException e) {
 			System.out.println("DB 에러"+e.getMessage());
 			return false;
 		}finally {
 			DBClose.close(ps);
 		}
-		return true;
 	}
 	
 	//회원정보삭제
 	public boolean deleteMember(MemberVO vo) {
+		int cnt;
 		String sql = "DELETE from member WHERE id=?";
 		try {
 			ps=con.prepareStatement(sql);
 			ps.setString(1, vo.getId());
-			ps.executeUpdate();
+			cnt=ps.executeUpdate();
+			if(cnt>0) {
+				System.out.println(vo.getId()+"삭제성공");
+				return true;
+			}else {
+				System.out.println("아이디를 찾을 수 없습니다.");
+				return false;
+			}
 		} catch (SQLException e) {
-			System.out.println("DB 에러"+e.getMessage());
+			System.out.println("DB 에러 "+e.getMessage());
 			return false;
 		}finally {
 			DBClose.close(ps);
 		}
-		return true;
 	}
 	
-	//회원아이디검색
+	//로그인 아이디 비밀번호
 	public ArrayList<MemberVO> getlogin(String id, String password) {
 		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
 		String sql = "select id, password from member where id like '%'||?||'%' "

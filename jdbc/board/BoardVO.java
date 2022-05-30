@@ -6,7 +6,6 @@ public class BoardVO {
 	private String writer;
 	
 	public BoardVO() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	public BoardVO(String title, String content, String writer) {

@@ -14,6 +14,9 @@ public class MemberVO {
 		setName(name);//this.name = name;
 		setEmail(email);
 	}
+	public MemberVO(String id) {
+		setId(id);
+	}
 
 	public String getId() {
 		return id;

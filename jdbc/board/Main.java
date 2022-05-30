@@ -3,7 +3,6 @@ package jdbc.board;
 public class Main {
 	public static void main(String[] args) {
 		MemberManager mm = new MemberManager();
-		BoardManager bm = new BoardManager();
 		int sel = 0;
 		int num = 0;
 		while(true) {
@@ -26,19 +25,19 @@ public class Main {
 						switch (sel) {
 							case 1:
 								//게시물작성
-								bm.newBoard();
+								mm.newBoard();
 								break;
 							case 2:
 								//게시물 전체보기
-								bm.listBoard();
+								mm.listBoard();
 								break;
 							case 3:
 								//게시물 수정
-								bm.editBoard();
+								mm.editBoard();
 								break;
 							case 4:
 								//게시물 삭제
-								bm.deleteBoard();
+								mm.deleteBoard();
 								break;
 							case 5:
 								System.out.println("로그아웃");
@@ -69,16 +68,16 @@ public class Main {
 							mm.removeData();
 							break;
 						case 4:
-							bm.newBoard();
+							mm.newBoard();
 							break;
 						case 5:
-							bm.listBoard();
+							mm.listBoard();
 							break;
 						case 6:
-							bm.editBoard();
+							mm.editBoard();
 							break;
 						case 7:
-							bm.deleteBoard();
+							mm.deleteBoard();
 							break;
 						case 8:
 							//로그아웃

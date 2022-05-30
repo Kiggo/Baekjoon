@@ -61,36 +61,50 @@ public class BoardDAO {
 	
 	//게시물 변경
 	public boolean EditPost(BoardVO vo) {	
+		int result;
 		String sql = "UPDATE board SET title=?,content=? WHERE writer=?";
 		try {
 			ps=con.prepareStatement(sql);
 			ps.setString(1, vo.getTitle());
 			ps.setString(2, vo.getContent());
 			ps.setString(3, vo.getWriter());
-			ps.executeUpdate();
+			result = ps.executeUpdate();
+			if(result>0) {
+				System.out.println(vo.getWriter()+"수정성공");
+				return true;
+			}else {
+				System.out.println("게시물을 찾을 수 없습니다.");
+				return false;
+			}
 		} catch (SQLException e) {
 			System.out.println("DB 에러 "+e.getMessage());
 			return false;
 		}finally {
 			DBClose.close(ps);
 		}
-		return true;
 	}
 	
 	//게시물 삭제
 	public boolean DeletePost(BoardVO vo) {
+		int result;
 		String sql = "DELETE from board WHERE writer=?";
 		try {
 			ps=con.prepareStatement(sql);
 			ps.setString(1, vo.getWriter());
-			ps.executeUpdate();
+			result = ps.executeUpdate();
+			if(result>0) {
+				System.out.println(vo.getWriter()+"삭제성공");
+				return true;
+			}else {
+				System.out.println("아이디를 찾을 수 없습니다.");
+				return false;
+			}
 		} catch (SQLException e) {
 			System.out.println("DB 에러"+e.getMessage());
 			return false;
 		}finally {
 			DBClose.close(ps);
 		}
-		return true;
 	}
 }
 

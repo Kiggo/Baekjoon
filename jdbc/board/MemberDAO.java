@@ -62,7 +62,7 @@ public class MemberDAO {
 	
 	//회원정보변경
 	public boolean editMember(MemberVO vo) {
-		int cnt;
+		int result ;
 		String sql = "UPDATE member SET id=?,password=?,email=? WHERE name=?";
 		try {
 			ps=con.prepareStatement(sql);
@@ -70,8 +70,8 @@ public class MemberDAO {
 			ps.setString(2, vo.getPassword());
 			ps.setString(3, vo.getEmail());
 			ps.setString(4, vo.getName());
-			cnt=ps.executeUpdate();
-			if(cnt>0) {
+			result = ps.executeUpdate();
+			if(result >0) {
 				System.out.println(vo.getName()+"수정성공");
 				return true;
 			}else {
@@ -88,13 +88,13 @@ public class MemberDAO {
 	
 	//회원정보삭제
 	public boolean deleteMember(MemberVO vo) {
-		int cnt;
+		int result;
 		String sql = "DELETE from member WHERE id=?";
 		try {
 			ps=con.prepareStatement(sql);
 			ps.setString(1, vo.getId());
-			cnt=ps.executeUpdate();
-			if(cnt>0) {
+			result = ps.executeUpdate();
+			if(result>0) {
 				System.out.println(vo.getId()+"삭제성공");
 				return true;
 			}else {

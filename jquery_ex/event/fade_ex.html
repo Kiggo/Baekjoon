@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$(function(){
+		/*  $("button").click(function(){
+			    $("#div1").fadeToggle();
+			    $("#div2").fadeToggle("slow");
+			    $("#div3").fadeToggle(3000);
+			  }); */
+		 
+		  /* $("#flip").click(function(){
+			    $("#panel").slideToggle("slow");
+			  }); */
+			 $('#ani').click(function(){
+				 $("div").animate({left: '250px'});
+			 });
+	});
+</script>
+<style> 
+#panel, #flip {
+  padding: 5px;
+  text-align: center;
+  background-color: #e5eecc;
+  border: solid 1px #c3c3c3;
+}
+
+#panel {
+  padding: 50px;
+  display: none;
+}
+</style>
+</head>
+<body>
+<p>Demonstrate fadeToggle() with different speed parameters.</p>
+
+<button>Click to fade in/out boxes</button><br><br>
+
+<div id="div1" style="width:80px;height:80px;background-color:red;"></div>
+<br>
+<div id="div2" style="width:80px;height:80px;background-color:green;"></div>
+<br>
+<div id="div3" style="width:80px;height:80px;background-color:blue;"></div>
+
+ 
+<div id="flip">Click to slide the panel down or up</div>
+<div id="panel">Hello world!</div>
+
+<button id="ani">Start Animation</button>
+<div style="background:#98bf21;height:100px;width:100px;position:absolute;"></div>
+</body>
+</html>

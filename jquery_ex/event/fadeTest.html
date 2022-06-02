@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$(function(){
+		$("#go").click(function(){
+			//$("div").animate({left: '100px',top:'100px'},2000);
+			$("div").animate({left: '+=100px',top:'+=100px'},2000);
+		});
+		$("#back").click(function(){
+			//$("div").animate({left: '0px',top:'50px'},2000);
+			$("div").animate({left: '-=100px',top:'-=100px'},2000);
+		});
+		$("#stop").click(function(){
+			$("div").stop();
+		});
+		$("#callback").click(function(){
+			$("p").hide("slow", function(){
+				alert("The paragraph is now hidden");
+			});
+		});
+	});
+
+</script>
+</head>
+<body>
+<button id="go">Go</button>
+<button id="stop">Stop</button>
+<button id="back">Back</button>
+<div style="position: absolute; background-color:#abc; left: 0px; top:50px; width: 60px; height: 60px; margin: 5px;"></div>
+<br><br><br><br><br><br><br><br>
+<button id="callback">Hide</button>
+<p>This is a paragraph with little content.</p>
+</body>
+</html>

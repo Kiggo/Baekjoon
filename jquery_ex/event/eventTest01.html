@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$(function(){
+		//$("p").click(function(){
+		// 1. $(this).hide();
+		//2. mouseenter
+		/* $('#p1').mouseenter(function(){
+			alert("You entered p1!"); */
+		//3. mouseleave
+			/* $('#p1').mouseleave(function(){
+			alert("Bye! You now leave p1!");
+			}); */
+		//4.hover
+			/* $("#p1").hover(function(){
+  				alert("You entered p1!");
+			},
+			function(){
+  			alert("Bye! You now leave p1!");
+			}); */
+		//5.focus
+		/* $("input").focus(function(){
+			$(this).css("background-color", "yellow");
+		});
+		//6.blur
+		$("input").blur(function(){
+			$(this).css("background-color", "green");
+			}); */
+		//7.on()Method
+			/* $("p").on("click",function(){
+				$(this).hide();
+			}); */
+	/*   $("p").on({
+    mouseenter: function(){
+      $(this).css("background-color", "lightgray");
+    },  
+    mouseleave: function(){
+      $(this).css("background-color", "lightblue");
+    }, 
+    click: function(){
+      $(this).css("background-color", "yellow");
+    }  
+  }); */
+     $("#hide").click(function(){
+    	$("p").hide(1000);
+  		});
+   	$("#show").click(function(){
+    	$("p").show(1000);
+ 		 });
+ 	 $("#toggle").click(function(){
+ 		 $("P").toggle();
+ 		 });
+	});
+</script>
+</head>
+<body>
+	<p>If you click on me, I will disappear.</p>
+	<p>Click me away!</p>
+	<p>Click me too!</p>
+	<p id="p1">Enter this paragraph.</p>
+<form action="">
+	Name: <input type="text" name="fullname"><br>
+	Email: <input type="text" name="email">
+</form>
+	<button id="hide">Hide</button>
+	<button id="show">Show</button>
+	<button id="toggle">Toggle between hiding and showing the paragraphs</button>
+</body>
+</html>

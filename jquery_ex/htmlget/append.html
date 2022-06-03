@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.important{
+	font-weight: bold;
+	font-size: xx-large;}
+	.blue{color:blue};
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+	$(function(){
+		$("#btn1").click(function(){
+			$("p").append(" <b>Appended text</b>.");
+		});
+		$("#btn2").click(function(){
+			$("ol").append(" <li>Appended item</li>");
+		});
+		$("#btn3").click(function(){
+			$("p").prepend("<b> Prepenede text</b>");
+		});
+		$("#btn4").click(function(){
+	    $("ol").prepend("<li>Prepended item</li>");
+	  });
+		$("#btn5").click(function(){
+			$("h1,h2,p").addClass("blue");
+			$("div").addClass("important");
+		});
+		$("#btn6").click(function(){
+			$("h1,h2,p").removeClass("blue");
+			$("div").removeClass("important");
+		});
+		$("#btn7").click(function(){
+			$("h1,h2,p").toggleClass("blue");
+		});
+	});
+	function appendText(){
+		var txt1 = "<p>Text.</p>"; //Create text with HTML
+		var txt2 = $("<p></p>").text("Text."); //Create text with jQuery
+		var txt3 = document.createElement("p");
+			txt3.innerHTML = "Text."; //Create text with DOM
+			$("body").append(txt1, txt2, txt3); // Append new elements
+	}
+</script>
+</head>
+<body>
+
+<h1 class="blue">Heading 1</h1>
+<h2 class="blue">Heading 2</h2>
+
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+
+<div>This is some important text!</div><br>
+
+<ol>
+  <li>List item 1</li>
+  <li>List item 2</li>
+  <li>List item 3</li>
+</ol>
+
+<button id="btn1">Append text</button>
+<button id="btn2">Append list items</button>
+<button id="btn3">Prepend text</button>
+<button id="btn4">Prepend list item</button>
+<button onclick="appendText()">Append text</button>
+<button id="btn5">Add classes to elements</button>
+<button id="btn6">Remove class from elements</button>
+<button id="btn7">Toggle class</button>
+</body>
+</html>

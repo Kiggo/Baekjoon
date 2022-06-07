@@ -7,7 +7,12 @@ public class _12943 {
 		Scanner sc = new Scanner(System.in);
 		long num = sc.nextInt();
 		int answer = 0;
+		
 		while(true) {
+			if(num==1) {
+				answer=0;
+				break;
+			}
 			answer++;
 			if(num%2==0) 
 				num = num /2 ;

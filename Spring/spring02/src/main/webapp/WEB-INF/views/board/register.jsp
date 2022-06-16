@@ -16,7 +16,7 @@
  			<div class="panel-heading">Board Register</div>
  			<div class="panel-body">
  				<form role="form" action="/board/register" method="post">
- 					<div clsss="form-group">
+ 					<div class="form-group">
  						<label>Title</label><input class="form-control" name="title">
  					</div>
  					<div class="form=group">

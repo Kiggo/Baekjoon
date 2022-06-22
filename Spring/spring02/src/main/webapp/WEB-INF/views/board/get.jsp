@@ -6,7 +6,7 @@
 
 <div class="row">
 	<div class="col-lg-12">
-		<h1>Board Register</h1>
+		<h1 class='page-header'>Board Read</h1>
 	</div>
 </div>
 
@@ -15,11 +15,11 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">Board Read Page</div>
 			<div class="panel-body">
-				<div clsss="form-group">
+				<div class="form-group">
 					<label>Bno</label><input class="form-control" name="bno"
 						value='<c:out value="${board.bno }" />' readonly="readonly">
 				</div>
-				<div clsss="form-group">
+				<div class="form-group">
 					<label>Title</label><input class="form-control" name="title"
 						value='<c:out value="${board.title }" />' readonly="readonly">
 				</div>
@@ -40,7 +40,7 @@
 					onclick="location.href='/board/list'">List</button> --%>
 					
 					<button data-oper='modify' class="btn btn-default">Modify</button>
-					<button data-oper='list' class="btn btn-default">List</button>
+					<button data-oper='list' class="btn btn-info">List</button>
 
 				<form id='operForm' action="/board/modify" method="get">
 					<input type='hidden' id='bno' name='bno'

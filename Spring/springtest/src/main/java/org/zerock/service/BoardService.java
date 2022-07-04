@@ -20,4 +20,5 @@ public interface BoardService {
 	
 	public int getTotal(Criteria cri);
 	
+	
 }

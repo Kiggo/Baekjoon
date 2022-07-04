@@ -1,5 +1,6 @@
 package org.zerock.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,19 +53,43 @@ public class BoardController {
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 	
+	/*
+	  @GetMapping("/register") public void register() {
+	  
+	  }
+	 */	
 	@GetMapping("/register")
+	@PreAuthorize("isAuthenticated()")
 	public void register() {
 		
 	}
 	
-	@PostMapping("/register")
-	public String register(BoardVO board, RedirectAttributes rttr) {
-		log.info("register: " + board);
-		service.register(board);
-		rttr.addFlashAttribute("result",board.getBno());
-		return "redirect:/board/list";
-	}
-/*	
+  @PostMapping("/register")
+  @PreAuthorize("isAuthenticated()") public String register(BoardVO board,
+  RedirectAttributes rttr) {
+  
+  log.info("register: " + board);
+  service.register(board);
+  rttr.addFlashAttribute("result",board.getBno()); 
+  
+  return "redirect:/board/list";
+  
+  }
+	 
+	
+	/*
+	  @PostMapping("/register") 
+	  public String register(BoardVO board,
+	  RedirectAttributes rttr) { 
+	  
+	  log.info("register: " + board);
+	  service.register(board); 
+	  rttr.addFlashAttribute("result",board.getBno());
+	  
+	  return "redirect:/board/list"; }
+	 */
+	 
+	/*	
 	@GetMapping({"/get","/modify"})
 	public void get(@RequestParam("bno") Long bno, Model model) {
 		log.info("/get or modify");
@@ -107,6 +132,7 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	*/
+	@PreAuthorize("principal.username == #board.writer")
 	@PostMapping("/modify")
 	public String modify(BoardVO board, Criteria cri, RedirectAttributes rttr) {
 		log.info("modify: "+board);
@@ -116,6 +142,17 @@ public class BoardController {
 		}
 		return "redirect:/board/list" + cri.getListLink();
 	}
+	/*
+	@PostMapping("/modify")
+	public String modify(BoardVO board, Criteria cri, RedirectAttributes rttr) {
+		log.info("modify: "+board);
+		
+		if(service.modify(board)) {
+			rttr.addFlashAttribute("result", "success");
+		}
+		return "redirect:/board/list" + cri.getListLink();
+	}
+	*/
 
 /*	
 	@PostMapping("/remove")
@@ -144,6 +181,17 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	*/
+	@PreAuthorize("principal.username == #writer")
+	@PostMapping("/remove")
+	public String remove(@RequestParam("bno") Long bno,
+			Criteria cri, RedirectAttributes rttr, String writer) {
+		log.info("remove..." + bno);
+		if(service.remove(bno)) {
+			rttr.addFlashAttribute("result", "success");
+		}
+		return "redirect:/board/list" + cri.getListLink();
+	}
+	/*
 	@PostMapping("/remove")
 	public String remove(@RequestParam("bno") Long bno,
 			Criteria cri, RedirectAttributes rttr) {
@@ -153,4 +201,5 @@ public class BoardController {
 		}
 		return "redirect:/board/list" + cri.getListLink();
 	}
+	*/
 }

@@ -3,6 +3,8 @@ package org.zerock.controller;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -79,6 +81,17 @@ public class SampleController {
 		dto.setAge(10);
 		dto.setName("홍길동");
 		return dto;
+	}
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_MEMBER')")
+	@GetMapping("/annoMember")
+	public void doMember2() {
+		log.info("logined annotation member");
+	}
+	
+	@Secured({"ROLE_ADMIN"})
+	@GetMapping("/annoAdmin")
+	public void doAdmin2() {
+		log.info("admin annotation only");
 	}
 	
 	

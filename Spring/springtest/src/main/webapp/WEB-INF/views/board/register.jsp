@@ -27,8 +27,7 @@
 					</div>
 					<div class="form-group">
 						<label>Writer</label> <input class="form-control" name='writer'
-						value='<sec:authentication property="principal.username"/>'
-						readonly="readonly">
+						value='<sec:authentication property="principal.username"/>' readonly="readonly">
 					</div>
 					<button type="submit" class="btn btn-default">Submit
 						Button</button>

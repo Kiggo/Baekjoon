@@ -182,7 +182,7 @@
 		 
 	 }//end showList
 	 
-	 var modal =$(".modal");
+	 var modal = $(".modal");
 	 var modalInputReply = modal.find("input[name='reply']");
 	 var modalInputReplyer = modal.find("input[name='replyer']");
 	 var modalInputReplyDate = modal.find("input[name='replyDate']");
@@ -191,15 +191,32 @@
 	 var modalRemoveBtn = $("#modalRemoveBtn");
 	 var modalRegisterBtn = $("#modalRegisterBtn");
 	 
+	 var replyer = null;
+	 
+	 <sec:authorize access="isAuthenticated()">
+	 
+	 replyer = '<sec:authentication property="principal.username"/>';
+	 
+	 </sec:authorize>
+	 
+	 var csrfHeaderName = "${_csfr.headerName}";
+	 var csrfTokenValue = "${_csrf.token}";
+	 
 	 $("#addReplyBtn").on("click", function(e){
 		 
 		 modal.find("input").val("");
+		 modal.find("input[name='replyer']").val(replyer);
 		 modalInputReplyDate.closest("div").hide();
 		 modal.find("button[id != 'modalCloseBtn']").hide();
 		 
 		 modalRegisterBtn.show();
 		 
 		 $(".modal").modal("show");
+	 });
+	 
+	 //Ajax spring security header...
+	 $(document).ajaxSend(function(e, xhr, options){
+		 xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
 	 });
 	 
 	 modalRegisterBtn.on("click", function(e){

@@ -19,15 +19,31 @@
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	
+	
+	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<beans:property name="definitions">
+		<beans:list>
+			<beans:value>classpath:tiles/*.xml</beans:value>
+		</beans:list>
+		</beans:property>
+		<beans:property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory"/>
+	</beans:bean>
+	<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+		<beans:property name="order" value="1"></beans:property>
+	</beans:bean>
+		
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value="2"></beans:property>
 	</beans:bean>
 	
 	<context:component-scan base-package="org.zerock.controller" />
 	<!-- <beans:bean id="multipartResolver" 
 		class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></beans:bean> -->
-	<security:global-method-security pre-post-annotations="enabled" secured-annotations="enabled" />
+<!-- 	<security:global-method-security pre-post-annotations="enabled" secured-annotations="enabled" /> -->
 	
 	
 </beans:beans>
